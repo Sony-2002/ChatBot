@@ -1,7 +1,72 @@
+![Binaryhood](Logo/BinaryhoodLogo.png)
+
 # ChatBot
-Customer Support ChatBot
-The foundation of this chatbot lies in its machine learning capabilities, which enable it to understand, process, and respond to customer inquiries with unparalleled efficiency and accuracy. The "speak aloud" feature is a standout aspect of this project, designed to bridge the gap between text and voice communication. By allowing users to interact with the chatbot through spoken queries, it provides a more natural and conversational experience, akin to speaking with a live agent. This functionality is especially beneficial for users who prefer voice interactions over typing or who may find text-based communication inconvenient in certain scenarios. 
 
-In addition to its voice-based capabilities, the chatbot is equipped with a range of advanced features that enhance its usability and versatility. One such feature is the microphone input, which allows users to speak directly to the chatbot. The microphone serves as a critical component for capturing voice queries, which are then processed using sophisticated speech recognition algorithms. These algorithms convert spoken words into text, enabling the chatbot to analyze and respond to inquiries in real-time. This seamless integration of voice input ensures that the chatbot remains accessible and user-friendly, even for individuals who may not be tech-savvy.
+## Installation & Setup
 
-Another innovative feature of the chatbot is its image-to-text conversion functionality. This feature empowers users to upload images containing text, such as product labels, receipts, or handwritten notes. The chatbot leverages advanced optical character recognition (OCR) technology to extract textfrom these images, making it easier for users to seek assistance without manually typing out details. For instance, a customer who encounters an issue with a product could simply upload a photo of the product’s label, and the chatbot would quickly extract and process the relevant information toprovide an appropriate response. This capability not only saves time but also enhances the overallefficiency of the customer service process.
+[Install Python] https://www.dataquest.io/blog/installing-python-on-mac/
+
+[Install pip] https://phoenixnap.com/kb/install-pip-mac
+
+If you have Python & pip installed then check their version in the terminal or command line tools
+
+```
+python3 --version
+```
+
+```
+pip --version
+```
+
+## Installing Flask
+
+In your terminal run the requirements.txt file using this pip
+
+```
+pip install -r requirements.txt
+```
+
+
+## Running ChatBot Application in Terminal
+
+```
+cd into your directory
+```
+
+```
+python app.py
+```
+
+
+
+## What you will create
+
+In this tutorial, I will guide you through the process of building a chatbot that can carry out conversations with users using natural language processing.
+
+To start, we will be using Microsoft DialoGPT, a pre-trained language model that can generate human-like responses to given prompts. We will be integrating DialoGPT with Flask, a popular Python web framework, to create a web application that can communicate with users via a chat interface.
+
+For the frontend of our application, we will be using HTML, CSS, and JavaScript to create a visually appealing and interactive chat interface. Additionally, we will be using jQuery to handle the HTTP requests that are made to the backend server.
+
+Throughout the tutorial, I will provide step-by-step instructions on how to set up your development environment, install the necessary dependencies, and create the required files and code for the application. I will also explain how to train and fine-tune the DialoGPT model to improve the accuracy of its responses.
+
+By the end of this tutorial, you will have a fully functional chatbot that can engage in conversations with users, and you will have gained valuable experience in using Microsoft DialoGPT, Flask, and web development technologies such as HTML, CSS, and JavaScript.
+
+# ChatBot Link
+The Chatbot is constructed using the Microsoft/DialoGPT-medium model.
+
+```
+https://huggingface.co/microsoft/DialoGPT-medium
+```
+
+# User-Html
+
+```
+var userHtml = '<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">' + user_input + '<span class="msg_time_send">'+ time + 
+    '</span></div><div class="img_cont_msg"><img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg"></div></div>';
+```
+
+# Bot-HTML
+
+```
+var botHtml = '<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="https://i.ibb.co/fSNP7Rz/icons8-chatgpt-512.png" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">' + bot_response + '<span class="msg_time">' + time + '</span></div></div>';
+```

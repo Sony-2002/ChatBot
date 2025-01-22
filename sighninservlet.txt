@@ -1,0 +1,62 @@
+package pu.com;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/SigninServlet")
+public class SigninServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            // Establish database connection (replace databaseUrl, username, password)
+            String databaseUrl = "jdbc:mysql://localhost:3306/mydatabase";
+            String dbUsername = "your_username";
+            String dbPassword = "your_password";
+            conn = DriverManager.getConnection(databaseUrl, dbUsername, dbPassword);
+            
+            // Check if user exists in database
+            String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                // User exists, redirect to home page or dashboard
+                response.sendRedirect("index.jsp");
+            } else {
+                // User doesn't exist or invalid credentials, redirect back to sign-in page
+                response.sendRedirect("Sign-In Page.jsp");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle database errors
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
